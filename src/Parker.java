@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by twer on 3/26/14.
- */
 public class Parker {
     List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 

@@ -6,12 +6,9 @@ import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
-/**
- * Created by twer on 3/26/14.
- */
 public class TestParker {
-        Parker parker = new Parker();
-        Car car = new Car();
+    Parker parker = new Parker();
+    Car car = new Car();
 
     @Before
     public void setUp() throws Exception {

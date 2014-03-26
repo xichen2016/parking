@@ -1,16 +1,23 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.*;
 
 public class TestParking {
-    ParkingLot parkingLot = new ParkingLot(1);
-    Car car = new Car();
+    ParkingLot parkingLot;
+    Car car;
+
+    @Before
+    public void setUp() throws Exception {
+        parkingLot = new ParkingLot(1);
+        car = new Car();
+    }
 
     @Test
     public void testCanParkWhenNotFull() throws Exception {
         CarTicket ticket = parkingLot.park(car);
-        assertThat(parkingLot.pick(ticket), sameInstance(car));
+        assertThat(ticket.getCar(), sameInstance(car));
     }
 
     @Test
@@ -40,7 +47,7 @@ public class TestParking {
     public void testCantPickCarWhenCarNotIn() throws Exception {
         parkingLot.park(car);
         CarTicket carTicket = new CarTicket(new Car());
-        assertEquals(parkingLot.pick(carTicket), null);
+        assertNull(parkingLot.pick(carTicket));
     }
 
     @Test
