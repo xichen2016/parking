@@ -26,4 +26,8 @@ public class ParkingLot {
 
         return null;
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

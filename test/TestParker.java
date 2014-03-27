@@ -1,17 +1,19 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertNotNull;
 import static org.hamcrest.CoreMatchers.sameInstance;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class TestParker {
-    Parker parker = new Parker();
-    Car car = new Car();
+    Parker parker;
+    Car car;
 
     @Before
     public void setUp() throws Exception {
+        parker = new Parker();
+        car = new Car();
         parker.addParkingLot(new ParkingLot(1));
     }
 
@@ -28,9 +30,11 @@ public class TestParker {
 
     @Test
     public void testShouldParkWhenFirstFullSecondNotFull() throws Exception {
-        parker.park(new Car());
-        assertNull(parker.park(car));
-        parker.addParkingLot(new ParkingLot(1));
-        assertNotNull(parker.park(car));
+        parker.park(car);
+        ParkingLot parkingLot = new ParkingLot(1);
+        parker.addParkingLot(parkingLot);
+        Car anotherCar = new Car();
+        parker.park(anotherCar);
+        assertTrue(parkingLot.getCars().contains(anotherCar));
     }
 }

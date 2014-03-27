@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.*;
 
-public class TestParking {
+public class TestParkingLot {
     ParkingLot parkingLot;
     Car car;
 

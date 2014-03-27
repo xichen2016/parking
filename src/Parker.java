@@ -5,9 +5,9 @@ public class Parker {
     List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
     public CarTicket park(Car car) {
-        for (ParkingLot parkingLot : parkingLots){
+        for (ParkingLot parkingLot : parkingLots) {
             CarTicket ticket = parkingLot.park(car);
-            if(ticket!=null) {
+            if (ticket != null) {
                 return ticket;
             }
         }
@@ -15,9 +15,9 @@ public class Parker {
     }
 
     public Car pick(CarTicket ticket) {
-        for (ParkingLot parkingLot : parkingLots){
+        for (ParkingLot parkingLot : parkingLots) {
             Car car = parkingLot.pick(ticket);
-            if(ticket!=null) {
+            if (car != null) {
                 return car;
             }
         }
