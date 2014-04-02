@@ -27,7 +27,11 @@ public class ParkingLot {
         return null;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public int getSpace() {
+        return capacity - cars.size();
+    }
+
+    public double getEmptyRatio() {
+        return 1 - cars.size() / (double)capacity;
     }
 }

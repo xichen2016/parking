@@ -2,14 +2,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parker {
-    List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+    protected List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+    private ParkinglotChooser normalParkinglotChooser;
+
+    public Parker(ParkinglotChooser normalParkinglotChooser) {
+        this.normalParkinglotChooser = normalParkinglotChooser;
+    }
 
     public CarTicket park(Car car) {
-        for (ParkingLot parkingLot : parkingLots) {
-            CarTicket ticket = parkingLot.park(car);
-            if (ticket != null) {
-                return ticket;
-            }
+        ParkingLot result = normalParkinglotChooser.findParkinglot(parkingLots);
+        CarTicket ticket = result.park(car);
+        if (ticket != null) {
+            return ticket;
         }
         return null;
     }

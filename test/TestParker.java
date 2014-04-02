@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.assertNull;
 import static junit.framework.TestCase.assertNotNull;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
@@ -12,7 +12,7 @@ public class TestParker {
 
     @Before
     public void setUp() throws Exception {
-        parker = new Parker();
+        parker = new Parker(new NormalParkinglotChooser());
         car = new Car();
         parker.addParkingLot(new ParkingLot(1));
     }
@@ -34,7 +34,14 @@ public class TestParker {
         ParkingLot parkingLot = new ParkingLot(1);
         parker.addParkingLot(parkingLot);
         Car anotherCar = new Car();
-        parker.park(anotherCar);
-        assertTrue(parkingLot.getCars().contains(anotherCar));
+        CarTicket carTicket = parker.park(anotherCar);
+        assertThat(parkingLot.pick(carTicket), sameInstance(anotherCar));
     }
+
+    @Test
+    public void testShouldNotPickWhenCarNotIn() throws Exception {
+        CarTicket carTicket = new CarTicket(car);
+        assertNull(parker.pick(carTicket));
+    }
+
 }
