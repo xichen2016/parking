@@ -3,14 +3,14 @@ import java.util.List;
 
 public class Parker {
     protected List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
-    private ParkinglotChooser normalParkinglotChooser;
+    private ParkingLotChooser parkingLotChooser;
 
-    public Parker(ParkinglotChooser normalParkinglotChooser) {
-        this.normalParkinglotChooser = normalParkinglotChooser;
+    public Parker(ParkingLotChooser parkingLotChooser) {
+        this.parkingLotChooser = parkingLotChooser;
     }
 
     public CarTicket park(Car car) {
-        ParkingLot result = normalParkinglotChooser.findParkinglot(parkingLots);
+        ParkingLot result = parkingLotChooser.findParkingLot(parkingLots);
         CarTicket ticket = result.park(car);
         if (ticket != null) {
             return ticket;

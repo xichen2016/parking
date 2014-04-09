@@ -12,7 +12,7 @@ public class TestParker {
 
     @Before
     public void setUp() throws Exception {
-        parker = new Parker(new NormalParkinglotChooser());
+        parker = new Parker(new NormalChooser());
         car = new Car();
         parker.addParkingLot(new ParkingLot(1));
     }

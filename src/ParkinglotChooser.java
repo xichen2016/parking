@@ -1,5 +1,5 @@
 import java.util.List;
 
-public interface ParkinglotChooser {
-    ParkingLot findParkinglot(List<ParkingLot> parkingLots);
+public interface ParkingLotChooser {
+    ParkingLot findParkingLot(List<ParkingLot> parkingLots);
 }
