@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Parker {
+public class Parker implements Parkable {
     protected List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
     private ParkingLotChooser parkingLotChooser;
 
@@ -9,6 +9,7 @@ public class Parker {
         this.parkingLotChooser = parkingLotChooser;
     }
 
+    @Override
     public CarTicket park(Car car) {
         ParkingLot result = parkingLotChooser.findParkingLot(parkingLots);
         CarTicket ticket = result.park(car);
@@ -18,6 +19,7 @@ public class Parker {
         return null;
     }
 
+    @Override
     public Car pick(CarTicket ticket) {
         for (ParkingLot parkingLot : parkingLots) {
             Car car = parkingLot.pick(ticket);
