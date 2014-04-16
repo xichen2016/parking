@@ -30,6 +30,30 @@ public class Parker implements Parkable {
         return null;
     }
 
+    @Override
+    public int summarize() {
+        int result=0;
+        for (ParkingLot parkingLot : parkingLots) {
+            result += parkingLot.summarize();
+        }
+        return result;
+    }
+
+    @Override
+    public String report() {
+        return "__Parker: " + String.valueOf(summarize());
+    }
+
+    @Override
+    public String detailReport() {
+        String result = report();
+        for (ParkingLot parkingLot : parkingLots) {
+            result += "\n";
+            result += parkingLot.detailReport();
+        }
+        return result;
+    }
+
     public void addParkingLot(ParkingLot parkingLot) {
         parkingLots.add(parkingLot);
     }

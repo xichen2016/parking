@@ -34,4 +34,16 @@ public class ParkingLot {
     public double getEmptyRatio() {
         return 1 - cars.size() / (double)capacity;
     }
+
+    public int summarize() {
+        return cars.size();
+    }
+
+    public String report() {
+        return "____ParkingLot: " + String.valueOf(summarize());
+    }
+
+    public String detailReport() {
+        return report();
+    }
 }

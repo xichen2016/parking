@@ -1,6 +1,8 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.TestCase.assertNotNull;
 import static org.hamcrest.CoreMatchers.sameInstance;
@@ -44,4 +46,36 @@ public class TestParker {
         assertNull(parker.pick(carTicket));
     }
 
+    @Test
+    public void testReturnSummary() throws Exception {
+        assertEquals(0,parker.summarize());
+        parker.park(new Car());
+        assertEquals(1,parker.summarize());
+        parker.addParkingLot(new ParkingLot(2));
+        assertEquals(1,parker.summarize());
+        parker.park(new Car());
+        assertEquals(2,parker.summarize());
+    }
+
+    @Test
+    public void testReturnReport() throws Exception {
+        assertEquals("__Parker: 0",parker.report());
+        parker.park(new Car());
+        assertEquals("__Parker: 1",parker.report());
+        parker.addParkingLot(new ParkingLot(2));
+        assertEquals("__Parker: 1",parker.report());
+        parker.park(new Car());
+        assertEquals("__Parker: 2",parker.report());
+    }
+
+    @Test
+    public void testReturnDetailReport() throws Exception {
+        Parker parkerDetail = new Parker(new NormalChooser());
+        parkerDetail.addParkingLot(new ParkingLot(2));
+        parkerDetail.addParkingLot(new ParkingLot(1));
+        parkerDetail.park(new Car());
+        parkerDetail.park(new Car());
+        String expectedReport = "__Parker: 2\n____ParkingLot: 1\n____ParkingLot: 1";
+        Assert.assertEquals(expectedReport, parkerDetail.detailReport());
+    }
 }
