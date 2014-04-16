@@ -46,9 +46,8 @@ public class ParkingManager implements Parkable {
     public String detailReport() {
         String result = report();
         for (Parkable parkable : parkerList) {
-            result += "\n";
-            result += parkable.detailReport();
+            result += "\n" + parkable.detailReport();
         }
-        return result;
+        return result.replace("\n", "\n__");
     }
 }

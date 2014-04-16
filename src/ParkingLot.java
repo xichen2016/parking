@@ -40,7 +40,7 @@ public class ParkingLot {
     }
 
     public String report() {
-        return "____ParkingLot: " + String.valueOf(summarize());
+        return "ParkingLot: " + String.valueOf(summarize());
     }
 
     public String detailReport() {

@@ -59,13 +59,13 @@ public class TestParker {
 
     @Test
     public void testReturnReport() throws Exception {
-        assertEquals("__Parker: 0",parker.report());
+        assertEquals("Parker: 0",parker.report());
         parker.park(new Car());
-        assertEquals("__Parker: 1",parker.report());
+        assertEquals("Parker: 1",parker.report());
         parker.addParkingLot(new ParkingLot(2));
-        assertEquals("__Parker: 1",parker.report());
+        assertEquals("Parker: 1",parker.report());
         parker.park(new Car());
-        assertEquals("__Parker: 2",parker.report());
+        assertEquals("Parker: 2",parker.report());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class TestParker {
         parkerDetail.addParkingLot(new ParkingLot(1));
         parkerDetail.park(new Car());
         parkerDetail.park(new Car());
-        String expectedReport = "__Parker: 2\n____ParkingLot: 1\n____ParkingLot: 1";
+        String expectedReport = "Parker: 2";
         Assert.assertEquals(expectedReport, parkerDetail.detailReport());
     }
 }

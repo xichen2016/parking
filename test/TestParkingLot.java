@@ -66,15 +66,15 @@ public class TestParkingLot {
 
     @Test
     public void testReturnReport() throws Exception {
-        assertEquals("____ParkingLot: 0",parkingLot.report());
+        assertEquals("ParkingLot: 0",parkingLot.report());
         parkingLot.park(new Car());
-        assertEquals("____ParkingLot: 1",parkingLot.report());
+        assertEquals("ParkingLot: 1",parkingLot.report());
     }
 
     @Test
     public void testReturnDetailReport() throws Exception {
-        assertEquals("____ParkingLot: 0",parkingLot.detailReport());
+        assertEquals("ParkingLot: 0",parkingLot.detailReport());
         parkingLot.park(new Car());
-        assertEquals("____ParkingLot: 1",parkingLot.detailReport());
+        assertEquals("ParkingLot: 1",parkingLot.detailReport());
     }
 }

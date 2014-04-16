@@ -41,16 +41,16 @@ public class Parker implements Parkable {
 
     @Override
     public String report() {
-        return "__Parker: " + String.valueOf(summarize());
+        return "Parker: " + String.valueOf(summarize());
     }
 
     @Override
     public String detailReport() {
         String result = report();
-        for (ParkingLot parkingLot : parkingLots) {
-            result += "\n";
-            result += parkingLot.detailReport();
-        }
+//        for (ParkingLot parkingLot : parkingLots) {
+//            result += "\n";
+//            result += "__" + parkingLot.detailReport();
+//        }
         return result;
     }
 

@@ -84,10 +84,7 @@ public class TestParkingManager {
 
         String emptyExpected = "ParkingManager: 0\n" +
                 "__Parker: 0\n" +
-                "____ParkingLot: 0\n" +
-                "____ParkingLot: 0\n" +
-                "__Parker: 0\n" +
-                "____ParkingLot: 0";
+                "__Parker: 0";
         Assert.assertEquals(emptyExpected, parkingManagerDetail.detailReport());
     }
 
@@ -109,11 +106,71 @@ public class TestParkingManager {
 
         String emptyExpected = "ParkingManager: 4\n" +
                 "__Parker: 3\n" +
-                "____ParkingLot: 2\n" +
-                "____ParkingLot: 1\n" +
-                "__Parker: 1\n" +
-                "____ParkingLot: 0\n" +
-                "____ParkingLot: 1";
+                "__Parker: 1";
         Assert.assertEquals(emptyExpected, parkingManagerDetail.detailReport());
+    }
+
+    @Test
+    public void testReturnSuperDetailReport() throws Exception {
+        ParkingManager parkingManagerDetail = new ParkingManager();
+        Parker parker1 = new Parker(new NormalChooser());
+        Parker parker2 = new Parker(new NormalChooser());
+        parker1.addParkingLot(new ParkingLot(2));
+        parker1.addParkingLot(new ParkingLot(1));
+        parker2.addParkingLot(new ParkingLot(1));
+        parker2.addParkingLot(new ParkingLot(2));
+        parkingManagerDetail.add(parker1);
+        parkingManagerDetail.add(parker2);
+        parkingManagerDetail.park(new Car());
+        parkingManagerDetail.park(new Car());
+        parkingManagerDetail.park(new Car());
+        parkingManagerDetail.park(new Car());
+
+        ParkingManager superManager = new ParkingManager();
+        superManager.add(parkingManagerDetail);
+        superManager.add(parkingManagerDetail);
+        superManager.add(parker1);
+
+        String emptyExpected = "ParkingManager: 11\n" +
+                "__ParkingManager: 4\n" +
+                "____Parker: 3\n" +
+                "____Parker: 1\n" +
+                "__ParkingManager: 4\n" +
+                "____Parker: 3\n" +
+                "____Parker: 1\n" +
+                "__Parker: 3";
+        Assert.assertEquals(emptyExpected, superManager.detailReport());
+    }
+
+    @Test
+    public void testGodManager() throws Exception {
+        ParkingManager parkingManagerDetail = new ParkingManager();
+        Parker parker1 = new Parker(new NormalChooser());
+        Parker parker2 = new Parker(new NormalChooser());
+        parker1.addParkingLot(new ParkingLot(2));
+        parker1.addParkingLot(new ParkingLot(1));
+        parker2.addParkingLot(new ParkingLot(1));
+        parker2.addParkingLot(new ParkingLot(2));
+        parkingManagerDetail.add(parker1);
+        parkingManagerDetail.add(parker2);
+        parkingManagerDetail.park(new Car());
+        parkingManagerDetail.park(new Car());
+        parkingManagerDetail.park(new Car());
+        parkingManagerDetail.park(new Car());
+
+        ParkingManager superManager = new ParkingManager();
+        superManager.add(parkingManagerDetail);
+        superManager.add(parker1);
+
+        ParkingManager godManager = new ParkingManager();
+        godManager.add(superManager);
+
+        String emptyExpected = "ParkingManager: 7\n" +
+                "__ParkingManager: 7\n" +
+                "____ParkingManager: 4\n" +
+                "______Parker: 3\n" +
+                "______Parker: 1\n" +
+                "____Parker: 3";
+        Assert.assertEquals(emptyExpected, godManager.detailReport());
     }
 }
