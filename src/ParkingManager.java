@@ -38,13 +38,8 @@ public class ParkingManager implements Parkable {
     }
 
     @Override
-    public String report() {
-        return "ParkingManager: " + String.valueOf(summarize());
-    }
-
-    @Override
     public String detailReport() {
-        String result = report();
+        String result = "ParkingManager: " + String.valueOf(summarize());
         for (Parkable parkable : parkerList) {
             result += "\n" + parkable.detailReport();
         }

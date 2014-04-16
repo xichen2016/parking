@@ -57,16 +57,6 @@ public class TestParker {
         assertEquals(2,parker.summarize());
     }
 
-    @Test
-    public void testReturnReport() throws Exception {
-        assertEquals("Parker: 0",parker.report());
-        parker.park(new Car());
-        assertEquals("Parker: 1",parker.report());
-        parker.addParkingLot(new ParkingLot(2));
-        assertEquals("Parker: 1",parker.report());
-        parker.park(new Car());
-        assertEquals("Parker: 2",parker.report());
-    }
 
     @Test
     public void testReturnDetailReport() throws Exception {

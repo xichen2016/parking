@@ -5,7 +5,5 @@ public interface Parkable {
 
     int summarize();
 
-    String report();
-
     String detailReport();
 }

@@ -54,22 +54,6 @@ public class TestParkingManager {
         assertEquals(2,manager.summarize());
     }
 
-    @Test
-    public void testReturnReport() throws Exception {
-        parker.addParkingLot(parkingLot);
-        manager.add(parker);
-
-        assertEquals("ParkingManager: 0",manager.report());
-        manager.park(new Car());
-        assertEquals("ParkingManager: 1",manager.report());
-
-        Parker anotherPaker = new Parker(new NormalChooser());
-        anotherPaker.addParkingLot(new ParkingLot(2));
-        manager.add(anotherPaker);
-        assertEquals("ParkingManager: 1",manager.report());
-        manager.park(new Car());
-        assertEquals("ParkingManager: 2",manager.report());
-    }
 
     @Test
     public void testReturnEmptyDetailReport() throws Exception {

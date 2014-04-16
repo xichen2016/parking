@@ -39,11 +39,4 @@ public class ParkingLot {
         return cars.size();
     }
 
-    public String report() {
-        return "ParkingLot: " + String.valueOf(summarize());
-    }
-
-    public String detailReport() {
-        return report();
-    }
 }
